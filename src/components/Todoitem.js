@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const Todoitem = ({id, todo, isCompleted, userId, isLogin,update,setUpdate}) => {
+const Todoitem = ({id, todo, isCompleted, userId, isLogin,update,setUpdate,setTodoList,todoList}) => {
     const [text,setText] = useState(todo)
     const [isChecked, setIsChecked] = useState(isCompleted);
     const [displayToggle, setDisplayToggle] = useState(true);
@@ -40,7 +40,7 @@ const Todoitem = ({id, todo, isCompleted, userId, isLogin,update,setUpdate}) => 
         }
         axios.put(`https://pre-onboarding-selection-task.shop/todos/${id}`,body,{headers})
         .then((res)=>{
-            setUpdate(update+1)
+            setUpdate(update+1);
             toggle();
         })
         .catch((error)=>{
@@ -54,7 +54,7 @@ const Todoitem = ({id, todo, isCompleted, userId, isLogin,update,setUpdate}) => 
         }
         axios.delete(`https://pre-onboarding-selection-task.shop/todos/${id}`,{headers})
         .then((res)=>{
-            setUpdate(update+1)
+            setTodoList(todoList.filter((item)=> item.id !==id))
         })
         .catch((error)=>{
             alert(`잘못된 요청입니다 에러 : ${error.response.data.message}`)

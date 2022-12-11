@@ -60,7 +60,7 @@ const Todo = () => {
         <h1>투두 리스트</h1>
         {todoList && todoList.map((item)=>(
           <Todoitem
-          key={item.key}
+          key={item.id}
           id={item.id}
           todo={item.todo}
           isCompleted={item.isCompleted}
@@ -68,6 +68,8 @@ const Todo = () => {
           isLogin={isLogin}
           update={update}
           setUpdate={setUpdate}
+          todoList={todoList}
+          setTodoList={setTodoList}
           />
         ))}
 
