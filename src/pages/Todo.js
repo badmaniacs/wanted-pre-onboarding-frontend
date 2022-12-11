@@ -18,6 +18,7 @@ const Todo = () => {
       if(!isLogin){
         alert("허가되지 않은 접근입니다 로그인해주세요")
         navigate('../')
+        return
       }
       const headers = {
         'Authorization': `Bearer ${isLogin}`
